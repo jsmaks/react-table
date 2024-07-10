@@ -20,14 +20,13 @@ function TableSelectPagination<TData>({ table }: Props<TData>) {
       <Select
         onValueChange={(value) => {
           table.setPageSize(Number(value));
-        }}
-      >
+        }}>
         <SelectTrigger className="w-[100px]" defaultValue={10}>
           <SelectValue defaultValue={String(pageSize)} placeholder={pageSize} />
         </SelectTrigger>
         <SelectContent>
-          {[10, 20, 30, 40, 50, totalRows].map((size) => (
-            <SelectItem value={String(size)}>
+          {[10, 20, 30, 40, 50, totalRows].map((size, index) => (
+            <SelectItem key={index} value={String(size)}>
               {totalRows === size ? "All rows" : size}
             </SelectItem>
           ))}
